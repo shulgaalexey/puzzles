@@ -15,8 +15,6 @@ using namespace std;
 
 int find_max_sum(const vector<vector<int> > &triangle) {
 
-	cout << "start..." << endl;
-
 	const int N = int(triangle.size());
 
 	vector<vector<int> > nodes = triangle;
@@ -24,8 +22,6 @@ int find_max_sum(const vector<vector<int> > &triangle) {
 		for(size_t j = 0; j < nodes[layer].size(); j ++)
 			nodes[layer][j] = 0;
 	}
-
-	cout << "ready empty nodes..." << endl;
 
 	for(int layer = (N - 1); layer > 0; layer --) {
 		const int layer_size = int(triangle[layer].size());
@@ -37,8 +33,6 @@ int find_max_sum(const vector<vector<int> > &triangle) {
 			const int parent_node_sum = nodes[layer -1][parent_index];
 			const int new_sum = max(max(sum_candidate1, sum_candidate2), parent_node_sum);
 			nodes[layer -1][parent_index] = new_sum;
-
-			cout << "set: " << int(layer - 1) << ", " << parent_index << ": " << new_sum << endl;
 		}
 	}
 
